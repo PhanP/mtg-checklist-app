@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: 'Gatsby Default Starter',
+    title: 'MTG Checklist',
   },
   plugins: [
     'gatsby-plugin-react-helmet',
