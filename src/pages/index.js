@@ -1,4 +1,5 @@
 import React from 'react'
+import { graphql } from 'gatsby'
 import Layout from '../components/layout'
 import CardBlock from '../components/cardBlock'
 import {
@@ -12,7 +13,24 @@ import {
   Progress,
 } from 'bloomer'
 
-const IndexPage = () => {
+export const query = graphql`
+  {
+    allGoogleSheetCardsRow {
+      edges {
+        node {
+          id
+          name
+          rarity
+          set
+          isOwned
+        }
+      }
+    }
+  }
+`
+
+const IndexPage = ({ data }) => {
+  console.log(data)
   return (
     <Layout>
       <Field>
@@ -23,12 +41,12 @@ const IndexPage = () => {
       </Field>
       <Panel>
         <PanelHeading>Cards (3/5)</PanelHeading>
-        <PanelBlock><Progress isSize='small' isColor="success" value={15} max={100} /></PanelBlock>
-        <CardBlock name="Liliana, The Last Hope" set="soi" />
-        <CardBlock name="Liliana, The Last Hope" set="soi" />
-        <CardBlock name="Liliana, The Last Hope" set="soi" />
-        <CardBlock name="Liliana, The Last Hope" set="soi" />
-        <CardBlock name="Liliana, The Last Hope" set="soi" />
+        <PanelBlock>
+          <Progress isSize="small" isColor="success" value={15} max={100} />
+        </PanelBlock>
+        {data.allGoogleSheetCardsRow.edges.map(({ node }) => (
+          <CardBlock key={node.id} card={node} />
+        ))}
       </Panel>
     </Layout>
   )

@@ -17,6 +17,7 @@ const Layout = ({ children }) => (
         site {
           siteMetadata {
             title
+            buildDate
           }
         }
       }
@@ -36,7 +37,7 @@ const Layout = ({ children }) => (
         >
           <html lang="en" />
         </Helmet>
-        <Header siteTitle={data.site.siteMetadata.title} />
+        <Header siteTitle={data.site.siteMetadata.title} buildDate={data.site.siteMetadata.buildDate} />
         <Container style={{ margin: '1rem' }}>{children}</Container>
       </>
     )}

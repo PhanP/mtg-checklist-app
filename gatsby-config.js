@@ -1,6 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: 'MTG Checklist',
+    buildDate: new Date().toLocaleString("en-US")
   },
   plugins: [
     'gatsby-plugin-react-helmet',
@@ -26,5 +27,13 @@ module.exports = {
       },
     },
     'gatsby-plugin-offline',
+    {
+      resolve: 'gatsby-source-google-sheets',
+      options: {
+        spreadsheetId: '1EKBpuHJ5oCi5fuuM9MYf2zUa7cXPIi5OOKOrrtFSfm8',
+        worksheetTitle: 'Cards',
+        credentials: require('./private/client-secret.json'),
+      },
+    },
   ],
 }
