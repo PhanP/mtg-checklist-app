@@ -1,61 +1,37 @@
 import React from 'react'
-import { Link } from 'gatsby'
-
 import Layout from '../components/layout'
+import CardBlock from '../components/cardBlock'
 import {
-  Box,
+  Field,
+  Label,
   Panel,
   PanelHeading,
   PanelBlock,
-  PanelIcon,
-  Icon,
-  Checkbox,
   Control,
   Input,
-  Button,
+  Progress,
 } from 'bloomer'
 
-const IndexPage = () => (
-  <Layout>
-    <Box>Hello World!</Box>
-    <Link to="/page-2/">Go to page 2</Link>
-    <Panel>
-      <PanelHeading>Repositories</PanelHeading>
-      <PanelBlock>
-        <Control hasIcons="left">
-          <Input placeholder="Search" />
-          <Icon isSize="small" isAlign="left">
-            <span className="fa fa-search" aria-hidden="true" />
-          </Icon>
+const IndexPage = () => {
+  return (
+    <Layout>
+      <Field>
+        <Label>Card Filter</Label>
+        <Control>
+          <Input type="text" placeholder="giant growth set:m12" />
         </Control>
-      </PanelBlock>
-      <PanelBlock isActive>
-        <PanelIcon className="fa fa-book" />
-        Bloomer
-      </PanelBlock>
-      <PanelBlock>
-        <PanelIcon className="fa fa-code-fork" />
-        RxJS
-      </PanelBlock>
-      <PanelBlock>
-        <PanelIcon className="fa fa-code-fork" />
-        Webpack
-      </PanelBlock>
-      <PanelBlock>
-        <PanelIcon className="ss ss-ktk" />
-        Typescript
-      </PanelBlock>
-      <PanelBlock tag="label">
-        <Checkbox> Remember me</Checkbox>
-      </PanelBlock>
-      <PanelBlock>
-        <Button isOutlined isFullWidth isColor="primary">
-          {' '}
-          Reset all filters
-        </Button>
-      </PanelBlock>
-    </Panel>
-  </Layout>
-)
+      </Field>
+      <Panel>
+        <PanelHeading>Cards (3/5)</PanelHeading>
+        <PanelBlock><Progress isSize='small' isColor="success" value={15} max={100} /></PanelBlock>
+        <CardBlock name="Liliana, The Last Hope" set="soi" />
+        <CardBlock name="Liliana, The Last Hope" set="soi" />
+        <CardBlock name="Liliana, The Last Hope" set="soi" />
+        <CardBlock name="Liliana, The Last Hope" set="soi" />
+        <CardBlock name="Liliana, The Last Hope" set="soi" />
+      </Panel>
+    </Layout>
+  )
+}
 
 export default IndexPage

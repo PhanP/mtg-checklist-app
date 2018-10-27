@@ -8,6 +8,7 @@ import { Container } from 'bloomer'
 import '@fortawesome/fontawesome-free/css/all.css'
 import 'keyrune/css/keyrune.css'
 import 'bulma/css/bulma.css'
+import '../styles/slate.bulmaswatch.css'
 
 const Layout = ({ children }) => (
   <StaticQuery
